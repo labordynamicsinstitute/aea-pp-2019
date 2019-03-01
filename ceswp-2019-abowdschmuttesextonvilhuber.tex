@@ -58,31 +58,40 @@
 % with 1.5 corresponding to "double" spacing.
 \draftSpacing{1.5}
 
+\makeatletter
+\def\blfootnote{\xdef\@thefnmark{}\@footnotetext}
+\makeatother
+
 \begin{document}
 
 \title{\mytitle}
 \author{\myauthors}
 
 \shortTitle{Economics, Privacy, and Computer Science}
-\pubMonth{May}
+\pubMonth{January}
 \date{January 2019}
 \pubYear{2019}
 \pubVolume{}
 \pubIssue{}
+
 \begin{abstract}
-	\input{Abstract.txt}
-	\newline
-	\newline\footnotesize
-	This version: January 19, 2019
+		This version: January 19, 2019
 \end{abstract}
 \maketitle
 
 \newpage 
-%\iftoggle{final}{}{\textbf{\textcolor{red}{\tiny Toggle final is set to FALSE. See template.tex}}}
 
+\begin{quote}
+	\textbf{Abstract:}
+		\blfootnote{$^*$ Abowd, Sexton, and Vilhuber:  U.S. Census Bureau, Washington, DC, USA and Cornell University, Ives Hall, Ithaca, NY, USA. Schmutte: U.S. Census Bureau and University of Georgia, Amos Hall, Athens, GA, USA. This research was partially funded through NSF Grant \#1131848 (NCRN) and Alfred P. Sloan Foundation Grant G-2015-13903. The views expressed in this paper are those of the authors and not those of the U.S. Census Bureau or other sponsors.}
+	\it
+	\input{Abstract.txt}
+\end{quote}
+%\iftoggle{final}{}{\textbf{\textcolor{red}{\tiny Toggle final is set to FALSE. See template.tex}}}
+\section*{Introduction}
 \input{main.tex}
 
-
+\newpage
 \bibliographystyle{aea}
 \bibliography{library}
 
@@ -93,7 +102,7 @@
 
 %\section{Extra}
 %\input{braindump.tex}
-
+\newpage
 \section{Online Appendix}
 \input{appendix.tex}
 
