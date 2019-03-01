@@ -1,11 +1,4 @@
-\begin{comment}
-To characterize the privacy loss associated with a reconstruction-abetted re-identification attack, we consider how much an attacker can learn about an individual $i$ from published data when $i's $ information is included in the data. Specifically, we consider how much information is leaked relative to the case in which $i's$ information is not used to make the publication, and the attacker is aware that this is the case.
 
-Suppose a data custodian publishes output computed from an underlying confidential database, $z\in\mathcal{D}$ using an $\epsilon$-differentially private mechanism, $M$. We denote the published output  $M(z)=\omega$ The publication mechanism is random, and $Pr(M(D)=\omega|D=x)$ is public knowledge for all $x\in\mathcal{D}$.
-
-A Bayesian adversary is in possession of auxiliary information $e$ that may include traditional identifiers (e.g., name and address) as well as some subset of the records or variables included in the confidential data.
-The adversary has a prior belief, $\mu$, over the joint distribution of possible confidential databases and auxiliary information, denoted $Pr_{\mu}(D=x, E=e)$. After seeing the auxiliary data, but before observing the mechanism output, the attacker's beliefs about $D$ are characterized as $Pr_{\mu}(D=x|E=e)$.
-\end{comment}
 
 Suppose a Bayesian adversary wants to learn the record $R$ belonging to individual $i$, from a confidential database, $x$. She has auxiliary information $E$ that includes traditional identifiers (e.g.,\ name and address) along with other variables that can be used to match against data published via differential privacy.
 The adversary has prior $\mu$ over the space of possible data vectors $\mathcal{D}$. A data custodian uses a bounded $\epsilon$-differentially private mechanism $M$ to publish output $M(x)=\omega$. Bounded differential privacy mechanisms treat the total number of records in the confidential database as public. Unbounded differential privacy mechanisms inject noise into the total record count as well. The algorithms under consideration for use with the 2020 Census are in the class of bounded differential privacy mechanisms. Upon observing $\omega$ and $E$, the adversary updates her beliefs about $R$, the record of an individual $i$, using Bayes law. By the law of total probability,
@@ -53,80 +46,4 @@ Similarly,  $\frac{\mu(R=r | \omega, E)}{\mu_{-i}(R=r | \omega, E)} \geq e^{-2\e
 
 %The inequality bound follows by applying the $\epsilon$-differential privacy guarantee that $Pr[M(z)=\omega] \leq e^\epsilon Pr[M(\tilde{z})=\omega]$ and $Pr[M(y)=\omega] \geq e^{-\epsilon}Pr[M(\tilde{y})=\omega]$ term-by-term to the numerator summation in the respective expressions.  Similarly, the ratio is lower bounded by $e^{-2\epsilon}$.
 
-\begin{comment}
-\begin{align*}
-    \frac{\mu(R=r | \omega, E)}{\mu_{-i}(R=r | \omega, E)} &=
-    \frac{\sum_{z \in \mathcal{D}}\mu(R=r, E, z) Pr[M(z)=\omega]/\sum_{y \in \mathcal{D}}\mu(E, y)Pr[M(y)=\omega]}{\sum_{z \in \mathcal{D}}\mu(R=r, E, z) Pr[M(\tilde{z})=\omega] / \sum_{y \in \mathcal{D}}\mu(E, y)Pr[M(\tilde{y})=\omega]}\\
-    &= \frac{\sum_{z \in \mathcal{D}}\mu(R=r, E, z) Pr[M(z)=\omega] / \sum_{z \in \mathcal{D}}\mu(R=r, E, z) Pr[M(\tilde{z})=\omega] }{\sum_{y \in \mathcal{D}}\mu(E, y)Pr[M(y)=\omega] / \sum_{y \in \mathcal{D}}\mu(E, y)Pr[M(\tilde{y})=\omega] } \in [e^{-2\epsilon}, e^{2\epsilon}]
-\end{align*}
-The inequality bounds follow since $\frac{Pr[M(z)=\omega]}{Pr[M(\tilde{z})=\omega]} \in [e^{-\epsilon}, e^\epsilon]$ and $\frac{Pr[M(y)=\omega]}{Pr[M(\tilde{y})=\omega]} \in [e^{-\epsilon}, e^\epsilon]$ given that $z$ and $\tilde{z}$ (resp. $y$ and $\tilde{y}$) differ by a single record and $M$ is bounded $\epsilon$-differentially private.
-\end{comment}
 
-
-\begin{comment}
-
-Let $r_i$ be the true confidential record of individual $i$. Suppose a Bayesian attacker treats the record as a random variable $R^i$. 
-He also has uncertainty about the confidential data and therefore views it as a random variable $\mathcal{V}$. 
-The attacker's arbitrary prior about $\mathcal{V}$ is $\theta$. 
-An unbounded $\epsilon$-differentially private mechanism $M$ is run on confidential dataset $D$ and output $M(D) = \omega$ is released. The attacker also has access to an auxiliary database $E$ which contains individual identifiers along with some subset of variables that are common between records in $E$ and $D$. Individual $i$'s identity is present in $E$. Thus the attacker knows with certainty a subset of the attributes of individual $i$'s confidential record $R^i$, regardless of whether $r^i$ is included in $D$. Exclusion of $i$'s record from $D$ is denoted by $D_{-1}$.  Without loss of generality, assume the attacker knows $e_1, \ldots, e_s$ are the first $s$ attributes of $i$'s record tuple, denoted $R^i_{1\ldots s} = e$. The attacker knows whether $r_i$ is in $D$. Then for any possible realization $r$ of $R^i$, the posterior-to-posterior ratio of the attacker's beliefs is bounded as follows:
-
-\begin{align}
-\frac{P_\theta(R^i=r~|~ M(\datax)=\omega, R^i_{1\ldots s} =e)}{P_\theta(R^i=r~|~ M(\datax_{-1})=\omega, R^i_{1\ldots s} =e)}
-&\in [e^{-2\epsilon}, e^{2\epsilon}]\label{eqn:responsibility}
-\end{align}
-
-\begin{proof}
-\begin{align*}
-\lefteqn{\frac{P_\theta(R^i=r~|~  M(\datax)=\omega, R^i_{1\ldots s} =e)}{P_\theta(R^i=r~|~  M(\datax_{-1})=\omega, R^i_{1\ldots s} =e)}}\\
-%
-&=\frac{
-  \sum_{D^\prime}  P_\theta(R^i=r, R^i_{1\ldots s}=e, M(D^\prime)=\omega, \datax=D^\prime)
-  /\sum_{D^*} P_\theta(R^i_{1\ldots s}=e, M(D^*)=\omega, \datax=D^*)
-}{
-  \sum_{D^\prime}  P_\theta(R^i=r, R^i_{1\ldots s}=e, M(D^\prime_{-1})=\omega, \datax=D^\prime)
-  /\sum_{D^*} P_\theta(R^i_{1\ldots s}=e, M(D^*_{-1})=\omega, \datax=D^*)
-}\\
-%
-&=\frac{
-  \sum_{D^\prime}  P_\theta(R^i=r, R^i_{1\ldots s}=e,\datax=D^\prime)P( M(D^\prime)=\omega)
-  /\sum_{D^*} P(M(D^*)=\omega)P_\theta(R^i_{1\ldots s}=e,\datax=D^*)
-}{
-  \sum_{D^\prime}  P_\theta(R^i=r, R^i_{1\ldots s}=e, \datax=D^\prime) P(M(D^\prime_{-1})=\omega)
-  /\sum_{D^*} P(M(D^*_{-1})=\omega)P_\theta(R^i_{1\ldots s}=e,\datax=D^*)
-}\\
-%
-&\in [e^{-2\epsilon}, e^{2\epsilon}]
-\end{align*}
-The final bound follows because the differential privacy hypothesis that $P( M(D)=\omega)/P(M(D_{-1})=\omega)\in [e^{-\epsilon}, e^\epsilon]$, is applied to the ratio involving $P(M(D')=\omega)$ as well as the ratio with $P(M(D^*)=\omega)$. 
-\end{proof}
-
-\end{comment}
-
-\begin{comment}
-\section{retry}
-$D$ is random from attacker's viewpoint. Its prior is $\theta$ and its posterior is $P_\theta(D | \omega)= \frac{P(\omega | D)P_\theta(D)}{P_\theta(\omega)}$.
-
-%By the law of total probability,
-%$P(\omega) = \sum_{D'} P(\omega | D')P_\theta(D')$. The summation is over the space of feasible realizations of $D$. 
-
-$P(\omega | D) = P(M(D)= \omega) \leq e^\epsilon P(M(D_{-1})=\omega) = e^\epsilon P(\omega | D_{-1})$. We have,
-$$P_\theta(D | \omega) \leq \frac{e^\epsilon P(\omega | D_{-1}) P_\theta(D)}{P_\theta(\omega)} = \frac{e^\epsilon P_\theta (D_{-1} | \omega) P_\theta(D)}{P_\theta(D_{-1})}$$
-
-Hence, $$\frac{P_\theta(D | \omega)/P_\theta(D)}{P_\theta(D_{-1} | \omega)/P_\theta(D_{-1})} = \frac{P_\theta(D|\omega)/P_\theta(D_{-1} | \omega)}{P_\theta(D)/P_\theta(D_{-1})} \leq e^\epsilon$$.  Interesting... but doesn't capture inference about an individual's record or explicitly treat auxiliary info.
-
-One step at a time...
-
-%$P_\theta(R=r | \omega) = \frac{ P_\theta(\omega | R=r) P_\theta(R = r)}{P_\theta(\omega)}$
-
-%Apply law of total prob,
-%$$P_\theta(\omega | R=r) = \sum_{D'} P_\theta(\omega | D', R=r) P_\theta(D'| R=r)$$
-
-%By law of total prob,
-%$P_\theta(R=r, D|\omega) = \sum_{D'}  P_\theta(R=r, D|D',\omega)P(D'|\omega)
-%= \sum_{D'} \frac{P_\theta(R=r, D', \omega)}{P_\theta(D', \omega)} P(D' | \omega) = \frac{P(R=r, D', \omega)}{P(\omega} P(D' | \omega) $
-
-$\frac{P(R=r,D | \omega)}{P(R=r, D_{-1} | \omega)} = \frac{P(R=r,D,\omega)}{P(R=r,D_{-1},\omega)}=\frac{P(R=r|D,\omega)P(\omega|D)P(D)}{P(R=r|D_{-1},\omega)P(\omega | D_{-1}) P(D_{-1})}\leq e^\epsilon\frac{P(R=r|D,\omega)P(D)}{P(R=r|D_{-1},\omega) P(D_{-1})} \leq e^{2\epsilon}\frac{P(R=r|D,\omega)P(D|\omega)}{P(R=r|D_{-1},\omega) P(D_{-1}|\omega)} \rightarrow 1 \leq e^{2\epsilon}.$ brilliant. well, at least it's true.
-
-%P(D | \omega, E) = P(\omega | D, E) P(D | E)/P(\omega | E)
-
-\end{comment}
