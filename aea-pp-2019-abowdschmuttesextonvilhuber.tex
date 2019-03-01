@@ -1,6 +1,6 @@
 % PP-Article.tex for AEA last revised 22 June 2011
 % When using the LaTeX or SW templates, please select the "finalmode" class option.
-\documentclass[finalmode,PP]{AEA}
+\documentclass[dvipsnames,finalmode,PP]{AEA}
 
 %PAGE LIMITS FOR PAPERS:
 
@@ -45,8 +45,11 @@
 
 }
 
+
+
 % Uncomment the next line to use the natbib package with bibtex
 \usepackage{natbib}
+\input{title-info.tex}
 
 % Uncomment the next line to use the harvard package with bibtex
 %\usepackage[abbr]{harvard}
@@ -56,16 +59,16 @@
 \draftSpacing{1.5}
 
 \begin{document}
-\input{title-info.tex}
+
 \title{\mytitle}
 \author{\myauthors}
 
 \shortTitle{Economics, Privacy, and Computer Science}
 \pubMonth{May}
-\date{\today}
+\date{January 2019}
 \pubYear{2019}
-\pubVolume{\color{red}\today}
-\pubIssue{\color{red}\currenttime}
+\pubVolume{}
+\pubIssue{}
 \maketitle
 
 %\iftoggle{final}{}{\textbf{\textcolor{red}{\tiny Toggle final is set to FALSE. See template.tex}}}
