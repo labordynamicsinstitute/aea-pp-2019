@@ -1,0 +1,32 @@
+\begin{center}
+    \captionsetup{type=figure}
+		\begin{tikzpicture}
+		\small
+		\color{black}
+		\begin{axis}[
+			% axis lines middle,
+			xmin = 0,
+			xmax = 5,
+			domain = 0:5, 
+			ymin=0,  
+			ymax=1,
+			samples=100, 
+			xlabel = {Privacy Loss ($\varepsilon$)}, 
+            ylabel near ticks,
+            xlabel near ticks,
+            ylabel = {Accuracy},
+			xtick={0,  10},
+			xtick pos=left,
+			ytick pos=left
+			]
+			% \addplot[blue, ultra thick] (x, 0.3*ln(x + (1+x^2)^(.5)));
+			\addplot[blue, ultra thick] (x,(1-e^(-x)));
+			\addplot[black, ultra thick, dashed, domain = 1.75:4] (x,.800852 + .049787068*x);
+			\addplot[black, ultra thick, dotted, domain = 0.05:1] (x,.090204 + 0.60653066*x);
+			\addplot[mark = *] coordinates{(0.5, 0.393469)} node[pin=0:{Data Custodians}]{};
+			\addplot[mark = *] coordinates{ (3,0.950213)} node[pin=268:{Data Users}]{};
+		  \end{axis}
+		\end{tikzpicture}
+\caption{The trade-off between privacy loss and accuracy in data publication}
+\label{fig:tradeoff}
+\end{center}

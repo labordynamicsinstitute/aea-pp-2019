@@ -1,0 +1,92 @@
+% PP-Article.tex for AEA last revised 22 June 2011
+% When using the LaTeX or SW templates, please select the "finalmode" class option.
+\documentclass[dvipsnames,finalmode,PP]{AEA}
+
+%PAGE LIMITS FOR PAPERS:
+
+%IMPORTANT NOTE: Page limits are firm. Because of space constraints, exceptions will NOT be made. Papers that do not adhere to the guidelines will be returned to the author. If, after being returned, the paper is not edited to conform to the guidelines, the paper will NOT be published.
+
+%4-paper session:
+%5 pages; (i.e., 5 pages if using our LaTeX/SW templates, 7 pages if using our Word template (if you are not using our templates: 10 double-spaced pages)), including all text, figures, tables, footnotes, acknowledgements, and references.
+
+%%%%%% NOTE FROM OVERLEAF: The mathtime package is no longer publicly available nor distributed. We recommend using a different font package e.g. mathptmx if you'd like to use a Times font.
+\usepackage{mathptmx}
+\usepackage{comment}
+\usepackage{acronym}
+\input{acrodefs.tex}
+\usepackage{tikz}
+\usepackage{pgfplots}
+%\pgfplotsset{compat=1.14}
+\usepackage{caption}
+\usepackage{float}
+\usepackage{listings}
+
+\DeclareMathOperator{\datax}{\mathcal{V}}
+% Toggle FINAL is set within TEMPLATE.tex
+\input{template.tex}
+% If you have trouble with the mathtime package please see our technical support 
+% document at: http://www.aeaweb.org/templates/technical_support.pdf
+% You may remove the mathtime package if you can't get it working but your page
+% count may be inaccurate as a result.
+% \usepackage[cmbold]{mathtime}
+
+% Note: you may use either harvard or natbib (but not both) to provide a wider
+% variety of citation commands than latex supports natively. See below.
+\iftoggle{final}{}{
+\usepackage{draftwatermark}
+\usepackage{transparent}
+\SetWatermarkText{\color{red} \transparent{0.2}Draft. Please do not cite. V1.0}
+\SetWatermarkScale{0.25}
+\SetWatermarkLightness{0.9}
+}
+
+% Uncomment the next line to use the natbib package with bibtex 
+\usepackage{natbib}
+
+% Uncomment the next line to use the harvard package with bibtex
+%\usepackage[abbr]{harvard}
+
+% This command determines the leading (vertical space between lines) in draft mode
+% with 1.5 corresponding to "double" spacing.
+\draftSpacing{1.5}
+
+\begin{document}
+\input{title-info.tex}
+\title{Online Appendix for: \mytitle}
+\author{\myauthors}
+
+\shortTitle{Economics, Privacy, and Computer Science}
+\pubMonth{May}
+\date{\today}
+\pubYear{2019}
+\pubVolume{Vol}
+\pubIssue{Issue}
+\maketitle
+
+\iftoggle{final}{}{\textbf{\textcolor{red}{\tiny Toggle final is set to FALSE. See template.tex}}}
+
+This document provides the online appendix to ``\textit{\mytitle}''. 
+
+% The appendix command is issued once, prior to all appendices, if any.
+\appendix
+
+% \section{Mathematical Appendix}
+
+%\section{Extra}
+%\input{braindump.tex}
+
+\section{Online Appendix}
+\input{appendix.tex}
+
+\newpage
+\section{Source code for Figure 1}
+
+\lstinputlisting[basicstyle=\small,language=TeX]{figure.tex}
+
+\begin{minipage}{\textwidth}
+	\input{figure.tex}
+\end{minipage}
+	
+
+\end{document}
+
