@@ -6,6 +6,11 @@ Authors: John M. Abowd, Ian M. Schmutte, William N. Sexton, and Lars Vilhuber
 
 > John M. Abowd, Ian M. Schmutte, William N. Sexton, and Lars Vilhuber, "Why the Economics Profession Must Actively Participate in the Privacy Protection Debate", AEA Papers and Proceedings, forthcoming May 2019.
 
+## Preprints
+
+- [Labor Dynamics Institute Document No. 51](https://digitalcommons.ilr.cornell.edu/ldi/51/)
+- [Center for Economic Studies Working Paper] forthcoming
+
 
 ## Abstract
 When Google or the U.S. Census Bureau publish detailed statistics on browsing habits or neighborhood characteristics, some privacy is lost for everybody while supplying public information. To date, economists have not focused on  the privacy loss inherent in data publication. In their stead, these issues have been advanced almost exclusively by computer scientists who are primarily interested in technical problems associated with  protecting privacy.  Economists should join the discussion, first, to determine where to balance privacy protection against data quality; a social choice problem. Furthermore, economists must ensure new privacy models preserve the validity of public data for economic research.
