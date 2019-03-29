@@ -9,7 +9,7 @@ Authors: John M. Abowd, Ian M. Schmutte, William N. Sexton, and Lars Vilhuber
 ## Preprints
 
 - [Labor Dynamics Institute Document No. 51](https://digitalcommons.ilr.cornell.edu/ldi/51/)
-- [Center for Economic Studies Working Paper](https://ideas.repec.org/p/cen/wpaper/19-09.html)
+- [Center for Economic Studies Working Paper 19-09](https://ideas.repec.org/p/cen/wpaper/19-09.html)
 
 
 ## Abstract
